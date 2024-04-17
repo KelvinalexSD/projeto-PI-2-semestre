@@ -11,11 +11,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #EFEFEF;
+    background-color: #E0F0E4;
 }
 
 .content {
-    background-color: #E0F0E4;
+    background-color: #fff;
     border-radius: 15px;
     width: 960px;
     height: 50%;
@@ -160,27 +160,172 @@
     /*margin: 10px 0;*/
 }
 
-.sign-in-js .first-content .first-column,
-.sign-in-js .first-content .second-column {
-    z-index: -1;
+
+/*ANIMAÇÃO DE PASSAGEM DO BOTÃO DE LOGIN*/
+    .sign-in-js .first-content .first-column {
+        z-index: -1;
+    }
+
+/*ANIMAÇÃO DO CONTEUDO(CADASTRO) QUE PASSA POR TRAS DA TRANSIÇÃO PARA O LADO ESQUERDO*/
+    .sign-in-js .first-content .second-column {
+        z-index: -1;
+        position: relative;
+        animation: deslocamentoEsq 1.5s;
+    }
+
+.sign-in-js .second-content .first-column {
+    z-index: 13;
 }
 
-.sign-in-js .second-content .first-column,
+
 .sign-in-js .second-content .second-column {
     z-index: 11;
 }
 
 .sign-in-js .content::before{
     left: 60%;
+    animation: slidein 1.5s;
+    z-index: 12;
+}
+/*TERMINA AQUI ANIMAÇÃO DE PASSAGEM DO BOTÃO DE LOGIN*/
+
+
+/*ANIMAÇÃO DE PASSAGEM DO BOTÃO DE CADASTRO*/
+.sign-up-js .content::before{
+    animation: slideup 1.5s;
+    z-index: 12;
 }
 
-.sign-up-js .second-content .first-column,
-.sign-up-js .second-content .second-column {
+.sign-up-js .second-content .first-column {
     z-index: -1;
 }
 
-.sign-up-js .first-content .first-column,
+/*ANIMAÇÃO DO CONTEUDO(LOGIN) QUE PASSA POR TRAS DA TRANSIÇÃO PARA O LADO DIREITO*/
+    .sign-up-js .second-content .second-column {
+        z-index: -1;
+        position: relative;
+        animation: deslocamentoDir 1.5s;
+    }
+
 .sign-up-js .first-content .second-column {
     z-index: 11;
 }
 
+.sign-up-js .first-content .first-column {
+    z-index: 13;
+}
+/*termina aqui ANIMAÇÃO DE PASSAGEM DO BOTÃO DE CADASTRO*/
+
+
+/*animação CSS para os dois conteudos*/
+@keyframes slidein {
+    from {
+        left: 0;
+        width: 40%;
+    }
+
+    /*
+    25% {
+        left: 15%;
+        width: 50%;
+
+    }
+    */
+
+    50% {
+        left: 30%;
+        width: 50%;
+
+    }
+
+    /*
+    75% {
+        left: 45%;
+        width: 50%;
+
+    }
+    */
+
+    to {
+        left: 60%;
+        width: 40%;
+
+    }
+}
+
+@keyframes slideup {
+    from {
+        left: 60%;
+        width: 40%;
+    }
+
+    /*
+    25% {
+        left: 15%;
+        width: 50%;
+
+    }
+    */
+
+    50% {
+        left: 30%;
+        width: 50%;
+
+    }
+
+    /*
+    75% {
+        left: 45%;
+        width: 50%;
+
+    }
+    */
+
+    to {
+        left: 0;
+        width: 40%;
+
+    }
+}
+
+
+/*ANIMAÇÃO DO CONTEUDO(CADASTRO) QUE PASSA POR TRAS DA TRANSIÇÃO PARA O LADO ESQUERDO*/
+@keyframes deslocamentoEsq {
+    from {
+        left: 0;
+        z-index: 12;
+        opacity: 1;
+    }
+
+    50% {
+        left: -75px;
+        opacity: .1;
+    }
+
+    to {
+        left: -110px;
+        z-index: -1;
+        opacity: 0;
+    }
+}
+
+
+/*ANIMAÇÃO DO CONTEUDO(LOGIN) QUE PASSA POR TRAS DA TRANSIÇÃO PARA O LADO DIREITO*/
+@keyframes deslocamentoDir {
+    from {
+        left: 0;
+        z-index: 12;
+        opacity: 1;
+    }
+
+    50% {
+        left: 75px;
+        opacity: .1;
+    }
+
+    to {
+        left: 110px;
+        z-index: -1;
+        opacity: 0;
+    }
+}
